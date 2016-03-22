@@ -117,45 +117,13 @@
   <ItemGroup>
     <Compile Include="EntityFramework\EMDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\EMRepositoryBase.cs" />
-    <Compile Include="Migrations\201506210746108_AbpZero_Initial.cs" />
-    <Compile Include="Migrations\201506210746108_AbpZero_Initial.Designer.cs">
-      <DependentUpon>201506210746108_AbpZero_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201603221631516_InitialEmDbData.cs" />
+    <Compile Include="Migrations\201603221631516_InitialEmDbData.Designer.cs">
+      <DependentUpon>201603221631516_InitialEmDbData.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201509081207232_UpdateModuleZeroTo_0_6_9.cs" />
-    <Compile Include="Migrations\201509081207232_UpdateModuleZeroTo_0_6_9.Designer.cs">
-      <DependentUpon>201509081207232_UpdateModuleZeroTo_0_6_9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201509290947427_Upgrade_To_ModuleZero_0_7_1.cs" />
-    <Compile Include="Migrations\201509290947427_Upgrade_To_ModuleZero_0_7_1.Designer.cs">
-      <DependentUpon>201509290947427_Upgrade_To_ModuleZero_0_7_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201510141938232_Upgrade_Abp_And_Module_Zero_To_0_7_3.cs" />
-    <Compile Include="Migrations\201510141938232_Upgrade_Abp_And_Module_Zero_To_0_7_3.Designer.cs">
-      <DependentUpon>201510141938232_Upgrade_Abp_And_Module_Zero_To_0_7_3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511091457384_Upgrade_To_ModuleZero_0_7_4.cs" />
-    <Compile Include="Migrations\201511091457384_Upgrade_To_ModuleZero_0_7_4.Designer.cs">
-      <DependentUpon>201511091457384_Upgrade_To_ModuleZero_0_7_4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512241146128_Upgrade_To_Module_Zero_0_7_6.cs" />
-    <Compile Include="Migrations\201512241146128_Upgrade_To_Module_Zero_0_7_6.Designer.cs">
-      <DependentUpon>201512241146128_Upgrade_To_Module_Zero_0_7_6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512241148372_Created_Indexes.cs" />
-    <Compile Include="Migrations\201512241148372_Created_Indexes.Designer.cs">
-      <DependentUpon>201512241148372_Created_Indexes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601032115057_Upgraded_Module_Zero_0_7_7.cs" />
-    <Compile Include="Migrations\201601032115057_Upgraded_Module_Zero_0_7_7.Designer.cs">
-      <DependentUpon>201601032115057_Upgraded_Module_Zero_0_7_7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602161446590_Upgrade_Abp_And_Module_Zero_To_0_8_1.cs" />
-    <Compile Include="Migrations\201602161446590_Upgrade_Abp_And_Module_Zero_To_0_8_1.Designer.cs">
-      <DependentUpon>201602161446590_Upgrade_Abp_And_Module_Zero_To_0_8_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603021000202_Upgrade_Abp_And_Module_Zero_To_0_8_2.cs" />
-    <Compile Include="Migrations\201603021000202_Upgrade_Abp_And_Module_Zero_To_0_8_2.Designer.cs">
-      <DependentUpon>201603021000202_Upgrade_Abp_And_Module_Zero_To_0_8_2.cs</DependentUpon>
+    <Compile Include="Migrations\201603221729107_AddSomeModel.cs" />
+    <Compile Include="Migrations\201603221729107_AddSomeModel.Designer.cs">
+      <DependentUpon>201603221729107_AddSomeModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="EMDataModule.cs" />
@@ -176,35 +144,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506210746108_AbpZero_Initial.resx">
-      <DependentUpon>201506210746108_AbpZero_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603221631516_InitialEmDbData.resx">
+      <DependentUpon>201603221631516_InitialEmDbData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201509081207232_UpdateModuleZeroTo_0_6_9.resx">
-      <DependentUpon>201509081207232_UpdateModuleZeroTo_0_6_9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201509290947427_Upgrade_To_ModuleZero_0_7_1.resx">
-      <DependentUpon>201509290947427_Upgrade_To_ModuleZero_0_7_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201510141938232_Upgrade_Abp_And_Module_Zero_To_0_7_3.resx">
-      <DependentUpon>201510141938232_Upgrade_Abp_And_Module_Zero_To_0_7_3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511091457384_Upgrade_To_ModuleZero_0_7_4.resx">
-      <DependentUpon>201511091457384_Upgrade_To_ModuleZero_0_7_4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512241146128_Upgrade_To_Module_Zero_0_7_6.resx">
-      <DependentUpon>201512241146128_Upgrade_To_Module_Zero_0_7_6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512241148372_Created_Indexes.resx">
-      <DependentUpon>201512241148372_Created_Indexes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601032115057_Upgraded_Module_Zero_0_7_7.resx">
-      <DependentUpon>201601032115057_Upgraded_Module_Zero_0_7_7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602161446590_Upgrade_Abp_And_Module_Zero_To_0_8_1.resx">
-      <DependentUpon>201602161446590_Upgrade_Abp_And_Module_Zero_To_0_8_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603021000202_Upgrade_Abp_And_Module_Zero_To_0_8_2.resx">
-      <DependentUpon>201603021000202_Upgrade_Abp_And_Module_Zero_To_0_8_2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603221729107_AddSomeModel.resx">
+      <DependentUpon>201603221729107_AddSomeModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -3,12 +3,19 @@ using Abp.Zero.EntityFramework;
 using EM.Authorization.Roles;
 using EM.MultiTenancy;
 using EM.Users;
+using System.Data.Entity;
+using EM.Entities;
 
 namespace EM.EntityFramework
 {
+    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class EMDbContext : AbpZeroDbContext<Tenant, Role, User>
     {
         //TODO: Define an IDbSet for your Entities...
+        public virtual IDbSet<Inf_Station> Inf_Station { set; get; }
+        public virtual IDbSet<Inf_StationType> Inf_StationType { set; get; }
+        public virtual IDbSet<Inf_Zone> Inf_Zone { set; get; }
+
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.

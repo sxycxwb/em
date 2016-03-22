@@ -8,7 +8,7 @@ namespace EM.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "EM";
+            ContextKey = "EMDB";
         }
 
         protected override void Seed(EM.EntityFramework.EMDbContext context)
