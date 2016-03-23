@@ -87,6 +87,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authorization\Inf_Stations\PermissionNames.cs" />
     <Compile Include="EMConsts.cs" />
     <Compile Include="EMCoreModule.cs" />
     <Compile Include="Authorization\EMAuthorizationProvider.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Authorization\Roles\AppRoleConfig.cs" />
     <Compile Include="Authorization\Roles\StaticRoleNames.cs" />
     <Compile Include="Editions\EditionManager.cs" />
+    <Compile Include="Entities\Inf_Employer.cs" />
     <Compile Include="Entities\Inf_Station.cs" />
     <Compile Include="Entities\Inf_StationType.cs" />
     <Compile Include="Entities\Inf_Zone.cs" />

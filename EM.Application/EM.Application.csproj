@@ -97,6 +97,12 @@
   <ItemGroup>
     <Compile Include="EMApplicationModule.cs" />
     <Compile Include="EMAppServiceBase.cs" />
+    <Compile Include="Inf_Stations\Dtos\CreateOrUpdateInf_StationInput.cs" />
+    <Compile Include="Inf_Stations\Dtos\GetInf_StationInput.cs" />
+    <Compile Include="Inf_Stations\Dtos\Inf_StationEditDto.cs" />
+    <Compile Include="Inf_Stations\Dtos\Inf_StationListDto.cs" />
+    <Compile Include="Inf_Stations\IInf_StationAppService.cs" />
+    <Compile Include="Inf_Stations\Inf_StationAppService.cs" />
     <Compile Include="MultiTenancy\Dto\CreateTenantInput.cs" />
     <Compile Include="MultiTenancy\ITenantAppService.cs" />
     <Compile Include="MultiTenancy\Dto\TenantListDto.cs" />

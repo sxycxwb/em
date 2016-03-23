@@ -12,10 +12,13 @@ namespace EM.EntityFramework
     public class EMDbContext : AbpZeroDbContext<Tenant, Role, User>
     {
         //TODO: Define an IDbSet for your Entities...
+        
+        //系统管理
         public virtual IDbSet<Inf_Station> Inf_Station { set; get; }
         public virtual IDbSet<Inf_StationType> Inf_StationType { set; get; }
         public virtual IDbSet<Inf_Zone> Inf_Zone { set; get; }
-
+        public virtual IDbSet<Inf_Employer> Inf_Employer { set; get; }
+        
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.
