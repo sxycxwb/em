@@ -13,7 +13,7 @@ namespace EM.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201603230626501_InitDatas"; }
+            get { return "201603250836306_InitDatas"; }
         }
         
         string IMigrationMetadata.Source

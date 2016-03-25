@@ -15,7 +15,7 @@ namespace EM.Entities.Dtos
     public class CreateOrUpdateInf_StationInput : IValidate
     {
 
-		public Inf_StationEditDto  Inf_StationEditDto {get;set;}
+		public Inf_StationEditDto Inf_StationEditDto {get;set;}
  
     }
 }

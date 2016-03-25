@@ -17,10 +17,10 @@ namespace EM.Entities
     [AbpAuthorize(PermissionNames.Inf_Station)]
     public class Inf_StationAppService : EMAppServiceBase, IInf_StationAppService
     {
-        private readonly IRepository<Inf_Station,System.Guid> _inf_StationRepository;
+        private readonly IRepository<Inf_Station, System.Guid> _inf_StationRepository;
 
         public Inf_StationAppService(
-            IRepository<Inf_Station,System.Guid> inf_StationRepository
+            IRepository<Inf_Station, System.Guid> inf_StationRepository
             )
         {
             _inf_StationRepository = inf_StationRepository;
@@ -33,15 +33,16 @@ namespace EM.Entities
         /// </summary>
         public async Task<PagedResultOutput<Inf_StationListDto>> GetPagedInf_Stations(GetInf_StationInput input)
         {
-			
-            var query = _inf_StationRepository.GetAll();
-			//TODO:根据传入的参数添加过滤条件
 
-			var inf_StationCount = await query.Count();
-			var inf_Stations = await query
-				.OrderBy(input.Sorting)
-				.PageBy(input)
-				.ToListAsync();
+            var query = _inf_StationRepository.GetAll();
+            //TODO:根据传入的参数添加过滤条件
+
+            var inf_StationCount = query.Count();
+
+            var inf_Stations = query
+                .OrderBy(d => input.Sorting)
+                .PageBy(input)
+                .ToList();
 
             var inf_StationListDtos = inf_Stations.MapTo<List<Inf_StationListDto>>();
             return new PagedResultOutput<Inf_StationListDto>(
@@ -67,7 +68,7 @@ namespace EM.Entities
         {
             if (input.Inf_StationEditDto.Id.HasValue)
             {
-				await UpdateInf_Station(input.Inf_StationEditDto);
+                await UpdateInf_Station(input.Inf_StationEditDto);
             }
             else
             {

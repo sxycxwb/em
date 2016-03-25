@@ -13,20 +13,17 @@ namespace EM.Entities
     /// <summary>
     /// 电厂
     /// </summary>
-    public class Inf_Station : FullAuditedEntity<Guid>
+    [Table("Inf_Station")]
+    public class InfStation : FullAuditedEntity<Guid>
     {
         /// <summary>
         /// 电厂地区
         /// </summary>
-        [ForeignKey("ZoneId")]
-        public virtual Inf_Zone Zone { get; set; }
         public virtual Guid ZoneId { get; set; }
 
         /// <summary>
         /// 电厂类型
         /// </summary>
-        [ForeignKey("StationTypeId")]
-        public virtual Inf_StationType StationType { get; set; }
         public virtual Guid StationTypeId { get; set; }
 
         /// <summary>

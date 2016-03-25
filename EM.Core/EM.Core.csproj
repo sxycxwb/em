@@ -96,10 +96,10 @@
     <Compile Include="Authorization\Roles\AppRoleConfig.cs" />
     <Compile Include="Authorization\Roles\StaticRoleNames.cs" />
     <Compile Include="Editions\EditionManager.cs" />
-    <Compile Include="Entities\Inf_Employer.cs" />
-    <Compile Include="Entities\Inf_Station.cs" />
-    <Compile Include="Entities\Inf_StationType.cs" />
-    <Compile Include="Entities\Inf_Zone.cs" />
+    <Compile Include="Entities\InfDictData.cs" />
+    <Compile Include="Entities\InfEmployer.cs" />
+    <Compile Include="Entities\InfStation.cs" />
+    <Compile Include="Entities\InfDictType.cs" />
     <Compile Include="Features\FeatureValueStore.cs" />
     <Compile Include="MultiTenancy\Tenant.cs" />
     <Compile Include="MultiTenancy\TenantManager.cs" />

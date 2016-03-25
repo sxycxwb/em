@@ -13,10 +13,9 @@ namespace EM.Entities
     /// <summary>
     /// 电厂
     /// </summary>
-    public class Inf_Employer : FullAuditedEntity<Guid>
+    [Table("Inf_Employer")]
+    public class InfEmployer : FullAuditedEntity<Guid>
     {
-       
-
         /// <summary>
         /// 员工姓名
         /// </summary>
@@ -52,9 +51,7 @@ namespace EM.Entities
         /// <summary>
         /// 电厂
         /// </summary>
-        [ForeignKey("StationId")]
-        public virtual Inf_Station Station { get; set; }
-        public virtual Guid StationId { get; set; }
+        public virtual InfStation Station { get; set; }
 
     }
 }

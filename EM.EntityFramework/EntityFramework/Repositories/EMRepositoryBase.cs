@@ -1,4 +1,6 @@
-﻿using Abp.Domain.Entities;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Abp.Domain.Entities;
 using Abp.EntityFramework;
 using Abp.EntityFramework.Repositories;
 
@@ -14,6 +16,8 @@ namespace EM.EntityFramework.Repositories
         }
 
         //add common methods for all repositories
+
+    
     }
 
     public abstract class EMRepositoryBase<TEntity> : EMRepositoryBase<TEntity, int>

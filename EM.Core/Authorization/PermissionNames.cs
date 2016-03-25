@@ -1,6 +1,6 @@
 ﻿namespace EM.Authorization
 {
-    public static class PermissionNames
+    public static partial class PermissionNames
     {
         public const string Pages = "Pages";
 

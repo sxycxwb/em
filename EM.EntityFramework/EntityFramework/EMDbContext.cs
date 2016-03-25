@@ -14,10 +14,11 @@ namespace EM.EntityFramework
         //TODO: Define an IDbSet for your Entities...
         
         //系统管理
-        public virtual IDbSet<Inf_Station> Inf_Station { set; get; }
-        public virtual IDbSet<Inf_StationType> Inf_StationType { set; get; }
-        public virtual IDbSet<Inf_Zone> Inf_Zone { set; get; }
-        public virtual IDbSet<Inf_Employer> Inf_Employer { set; get; }
+        public virtual IDbSet<InfStation> InfStation { set; get; }
+        public virtual IDbSet<InfEmployer> InfEmployer { set; get; }
+        public virtual IDbSet<InfDictType> InfDictType { set; get; }
+        public virtual IDbSet<InfDictData> InfDictData { set; get; }
+
         
 
         /* NOTE: 

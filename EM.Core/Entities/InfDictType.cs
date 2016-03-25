@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,9 +10,10 @@ using System.Threading.Tasks;
 namespace EM.Entities
 {
     /// <summary>
-    /// 电厂类型
+    /// 字典类型
     /// </summary>
-    public class Inf_StationType : Entity<Guid>
+    [Table("Inf_DictType")]
+    public class InfDictType : Entity<Guid>
     {
         /// <summary>
         /// 类型名称

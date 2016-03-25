@@ -95,14 +95,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConsts.cs" />
+    <Compile Include="Dto\FileDto.cs" />
+    <Compile Include="Dto\PagedAndFilteredInputDto.cs" />
+    <Compile Include="Dto\PagedAndSortedInputDto.cs" />
+    <Compile Include="Dto\PagedInputDto.cs" />
+    <Compile Include="Dto\PagedSortedAndFilteredInputDto.cs" />
     <Compile Include="EMApplicationModule.cs" />
     <Compile Include="EMAppServiceBase.cs" />
-    <Compile Include="Inf_Stations\Dtos\CreateOrUpdateInf_StationInput.cs" />
-    <Compile Include="Inf_Stations\Dtos\GetInf_StationInput.cs" />
-    <Compile Include="Inf_Stations\Dtos\Inf_StationEditDto.cs" />
-    <Compile Include="Inf_Stations\Dtos\Inf_StationListDto.cs" />
-    <Compile Include="Inf_Stations\IInf_StationAppService.cs" />
-    <Compile Include="Inf_Stations\Inf_StationAppService.cs" />
     <Compile Include="MultiTenancy\Dto\CreateTenantInput.cs" />
     <Compile Include="MultiTenancy\ITenantAppService.cs" />
     <Compile Include="MultiTenancy\Dto\TenantListDto.cs" />
