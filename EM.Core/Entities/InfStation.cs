@@ -17,15 +17,26 @@ namespace EM.Entities
     public class InfStation : FullAuditedEntity<Guid>
     {
         /// <summary>
-        /// 电厂地区
+        /// 地区ID
         /// </summary>
-        public virtual InfZone StationZone { get; set; }
-
+        public virtual Guid ZoneId { get; set; }
 
         /// <summary>
-        /// 电厂类型
+        /// 地区名称
         /// </summary>
-        public virtual InfZone StationType { get; set; }
+        [NotMapped]
+        public virtual string ZoneName { get; set; }
+
+        /// <summary>
+        /// 类型Id
+        /// </summary>
+        public virtual Guid TypeId { get; set; }
+
+        /// <summary>
+        /// 类型名称
+        /// </summary>
+        [NotMapped]
+        public virtual string TypeName { get; set; }
 
         /// <summary>
         /// 电厂名称

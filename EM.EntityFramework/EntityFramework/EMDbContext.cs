@@ -16,10 +16,14 @@ namespace EM.EntityFramework
         //系统管理
         public virtual IDbSet<InfStation> InfStation { set; get; }
         public virtual IDbSet<InfEmployer> InfEmployer { set; get; }
-        public virtual IDbSet<InfStationType> InfDictType { set; get; }
-        public virtual IDbSet<InfZone> InfDictData { set; get; }
+        public virtual IDbSet<InfStationType> InfStationType { set; get; }
+        public virtual IDbSet<InfZone> InfZone { set; get; }
 
-        
+        //车辆管理
+        public virtual IDbSet<VehVehicle> VehVehicle { set; get; }
+        public virtual IDbSet<VehUseRecord> VehUseRecord { set; get; }
+        public virtual IDbSet<VehMaintenance> VehMaintenance { set; get; }
+
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.

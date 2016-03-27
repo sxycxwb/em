@@ -59,9 +59,15 @@ namespace EM.Entities
         public virtual int AccumulatedCosts { get; set; }
 
         /// <summary>
-        /// 使用单位
+        /// 使用单位ID
         /// </summary>
-        public virtual string UseCompany { get; set; }
+        public virtual Guid UseCompanyId { get; set; }
+
+        /// <summary>
+        /// 使用单位名称
+        /// </summary>
+        [NotMapped]
+        public string UseCompanyName { get; set; }
 
     }
 }

@@ -17,6 +17,17 @@ namespace EM.Entities
     public class VehMaintenance : FullAuditedEntity<Guid>
     {
         /// <summary>
+        /// 使用单位ID
+        /// </summary>
+        public virtual Guid UseCompanyId { get; set; }
+
+        /// <summary>
+        /// 使用单位名称
+        /// </summary>
+        [NotMapped]
+        public string UseCompanyName { get; set; }
+
+        /// <summary>
         /// 车牌
         /// </summary>
         public virtual string NumberPlate { get; set; }
@@ -27,41 +38,41 @@ namespace EM.Entities
         /// </summary>
         public virtual string Brand { get; set; }
 
-        /// <summary>
-        /// 车辆类型
-        /// </summary>
-        public virtual string Type { get; set; }
-
-        /// <summary>
-        /// 车辆颜色
-        /// </summary>
-        public virtual string Color { get; set; }
-
-        /// <summary>
-        /// 发动机编号
-        /// </summary>
-        public virtual string EngineNumber { get; set; }
-
-        /// <summary>
-        /// 出厂日期
-        /// </summary>
-        [Required]
-        public virtual DateTime ProductionTime { get; set; }
 
         /// <summary>
         /// 行驶里程
         /// </summary>
-        public virtual int OwnershipRatio { get; set; }
+        public virtual int TripDistance { get; set; }
 
         /// <summary>
-        /// 累积费用
+        /// 时间
         /// </summary>
-        public virtual int MachineNumber { get; set; }
+        [Required]
+        public virtual DateTime Date { get; set; }
 
         /// <summary>
-        /// 使用单位
+        /// 类型
         /// </summary>
-        public virtual string MachineModel { get; set; }
+        public virtual string Type { get; set; }
 
+        /// <summary>
+        /// 费用
+        /// </summary>
+        public virtual int Costs { get; set; }
+
+        /// <summary>
+        /// 责任人
+        /// </summary>
+        public virtual string DutyPerson { get; set; }
+
+        /// <summary>
+        /// 联系方式
+        /// </summary>
+        public virtual string Contact { get; set; }
+
+        /// <summary>
+        /// 说明
+        /// </summary>
+        public virtual string Description { get; set; }
     }
 }

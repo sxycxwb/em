@@ -44,7 +44,13 @@ namespace EM.Entities
         /// <summary>
         /// 单位
         /// </summary>
-        public virtual InfStation Station { get; set; }
+        public virtual Guid StationId { get; set; }
+
+        /// <summary>
+        /// 单位名称
+        /// </summary>
+        [NotMapped]
+        public string StationName { get; set; }
 
     }
 }

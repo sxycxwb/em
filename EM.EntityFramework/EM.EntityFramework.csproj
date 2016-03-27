@@ -117,17 +117,13 @@
   <ItemGroup>
     <Compile Include="EntityFramework\EMDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\EMRepositoryBase.cs" />
-    <Compile Include="Migrations\201603250836306_InitDatas.cs" />
-    <Compile Include="Migrations\201603250836306_InitDatas.Designer.cs">
-      <DependentUpon>201603250836306_InitDatas.cs</DependentUpon>
+    <Compile Include="Migrations\201603271456474_InitData.cs" />
+    <Compile Include="Migrations\201603271456474_InitData.Designer.cs">
+      <DependentUpon>201603271456474_InitData.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603251402053_ModifyModel.cs" />
-    <Compile Include="Migrations\201603251402053_ModifyModel.Designer.cs">
-      <DependentUpon>201603251402053_ModifyModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603261153505_ModifyEmployer.cs" />
-    <Compile Include="Migrations\201603261153505_ModifyEmployer.Designer.cs">
-      <DependentUpon>201603261153505_ModifyEmployer.cs</DependentUpon>
+    <Compile Include="Migrations\201603271513285_ModifyModel.cs" />
+    <Compile Include="Migrations\201603271513285_ModifyModel.Designer.cs">
+      <DependentUpon>201603271513285_ModifyModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="EMDataModule.cs" />
@@ -148,14 +144,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603250836306_InitDatas.resx">
-      <DependentUpon>201603250836306_InitDatas.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603271456474_InitData.resx">
+      <DependentUpon>201603271456474_InitData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603251402053_ModifyModel.resx">
-      <DependentUpon>201603251402053_ModifyModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603261153505_ModifyEmployer.resx">
-      <DependentUpon>201603261153505_ModifyEmployer.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603271513285_ModifyModel.resx">
+      <DependentUpon>201603271513285_ModifyModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,7 +5,7 @@ namespace EM.Migrations
     using System.Data.Entity.Infrastructure.Annotations;
     using System.Data.Entity.Migrations;
     
-    public partial class InitDatas : DbMigration
+    public partial class InitData : DbMigration
     {
         public override void Up()
         {
@@ -92,7 +92,7 @@ namespace EM.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Inf_DictData",
+                "dbo.Inf_Zone",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
@@ -100,11 +100,11 @@ namespace EM.Migrations
                         DictType_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Inf_DictType", t => t.DictType_Id)
+                .ForeignKey("dbo.Inf_StationType", t => t.DictType_Id)
                 .Index(t => t.DictType_Id);
             
             CreateTable(
-                "dbo.Inf_DictType",
+                "dbo.Inf_StationType",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
@@ -120,9 +120,9 @@ namespace EM.Migrations
                         Name = c.String(nullable: false, unicode: false),
                         BirthDate = c.DateTime(nullable: false, precision: 0),
                         Duty = c.String(nullable: false, unicode: false),
-                        Contact = c.String(unicode: false),
                         Education = c.String(unicode: false),
-                        MachineCapacity = c.String(unicode: false),
+                        Contact = c.String(unicode: false),
+                        StationId = c.Guid(nullable: false),
                         IsDeleted = c.Boolean(nullable: false),
                         DeleterUserId = c.Long(),
                         DeletionTime = c.DateTime(precision: 0),
@@ -130,15 +130,12 @@ namespace EM.Migrations
                         LastModifierUserId = c.Long(),
                         CreationTime = c.DateTime(nullable: false, precision: 0),
                         CreatorUserId = c.Long(),
-                        Station_Id = c.Guid(),
                     },
                 annotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_InfEmployer_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Inf_Station", t => t.Station_Id)
-                .Index(t => t.Station_Id);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Inf_Station",
@@ -146,7 +143,7 @@ namespace EM.Migrations
                     {
                         Id = c.Guid(nullable: false),
                         ZoneId = c.Guid(nullable: false),
-                        StationTypeId = c.Guid(nullable: false),
+                        TypeId = c.Guid(nullable: false),
                         StationName = c.String(nullable: false, unicode: false),
                         ProductionTime = c.DateTime(nullable: false, precision: 0),
                         OwnershipRatio = c.Int(nullable: false),
@@ -498,8 +495,7 @@ namespace EM.Migrations
             DropForeignKey("dbo.AbpUsers", "DeleterUserId", "dbo.AbpUsers");
             DropForeignKey("dbo.AbpUsers", "CreatorUserId", "dbo.AbpUsers");
             DropForeignKey("dbo.AbpOrganizationUnits", "ParentId", "dbo.AbpOrganizationUnits");
-            DropForeignKey("dbo.Inf_Employer", "Station_Id", "dbo.Inf_Station");
-            DropForeignKey("dbo.Inf_DictData", "DictType_Id", "dbo.Inf_DictType");
+            DropForeignKey("dbo.Inf_Zone", "DictType_Id", "dbo.Inf_StationType");
             DropForeignKey("dbo.AbpFeatures", "EditionId", "dbo.AbpEditions");
             DropIndex("dbo.AbpUserNotifications", new[] { "UserId", "State", "CreationTime" });
             DropIndex("dbo.AbpTenants", new[] { "CreatorUserId" });
@@ -522,8 +518,7 @@ namespace EM.Migrations
             DropIndex("dbo.AbpPermissions", new[] { "RoleId" });
             DropIndex("dbo.AbpOrganizationUnits", new[] { "ParentId" });
             DropIndex("dbo.AbpNotificationSubscriptions", new[] { "NotificationName", "EntityTypeName", "EntityId", "UserId" });
-            DropIndex("dbo.Inf_Employer", new[] { "Station_Id" });
-            DropIndex("dbo.Inf_DictData", new[] { "DictType_Id" });
+            DropIndex("dbo.Inf_Zone", new[] { "DictType_Id" });
             DropIndex("dbo.AbpFeatures", new[] { "EditionId" });
             DropIndex("dbo.AbpBackgroundJobs", new[] { "IsAbandoned", "NextTryTime" });
             DropTable("dbo.AbpUserOrganizationUnits",
@@ -582,8 +577,8 @@ namespace EM.Migrations
                 {
                     { "DynamicFilter_InfEmployer_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.Inf_DictType");
-            DropTable("dbo.Inf_DictData");
+            DropTable("dbo.Inf_StationType");
+            DropTable("dbo.Inf_Zone");
             DropTable("dbo.AbpEditions",
                 removedAnnotations: new Dictionary<string, object>
                 {
