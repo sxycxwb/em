@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace EM.Entities
 {
     /// <summary>
-    /// 字典类型
+    /// 电厂类型
     /// </summary>
-    [Table("Inf_DictType")]
-    public class InfDictType : Entity<Guid>
+    [Table("Inf_StationType")]
+    public class InfStationType : Entity<Guid>
     {
         /// <summary>
         /// 类型名称

@@ -103,6 +103,12 @@
     <Compile Include="Dto\PagedSortedAndFilteredInputDto.cs" />
     <Compile Include="EMApplicationModule.cs" />
     <Compile Include="EMAppServiceBase.cs" />
+    <Compile Include="InfStationsApp\Dtos\CreateOrUpdateInfStationInput.cs" />
+    <Compile Include="InfStationsApp\Dtos\GetInfStationInput.cs" />
+    <Compile Include="InfStationsApp\Dtos\InfStationEditDto.cs" />
+    <Compile Include="InfStationsApp\Dtos\InfStationListDto.cs" />
+    <Compile Include="InfStationsApp\IInfStationAppService.cs" />
+    <Compile Include="InfStationsApp\InfStationAppService.cs" />
     <Compile Include="MultiTenancy\Dto\CreateTenantInput.cs" />
     <Compile Include="MultiTenancy\ITenantAppService.cs" />
     <Compile Include="MultiTenancy\Dto\TenantListDto.cs" />

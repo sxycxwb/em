@@ -16,8 +16,8 @@ namespace EM.EntityFramework
         //系统管理
         public virtual IDbSet<InfStation> InfStation { set; get; }
         public virtual IDbSet<InfEmployer> InfEmployer { set; get; }
-        public virtual IDbSet<InfDictType> InfDictType { set; get; }
-        public virtual IDbSet<InfDictData> InfDictData { set; get; }
+        public virtual IDbSet<InfStationType> InfDictType { set; get; }
+        public virtual IDbSet<InfZone> InfDictData { set; get; }
 
         
 

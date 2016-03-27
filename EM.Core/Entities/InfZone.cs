@@ -12,11 +12,11 @@ namespace EM.Entities
     /// <summary>
     /// 字典数据项
     /// </summary>
-    [Table("Inf_DictData")]
-    public class InfDictData : Entity<Guid>
+    [Table("Inf_Zone")]
+    public class InfZone : Entity<Guid>
     {
         /// <summary>
-        /// 字典项数据值
+        /// 区域
         /// </summary>
         [Required]
         public virtual string DictValue { get; set; }
@@ -24,6 +24,6 @@ namespace EM.Entities
         /// <summary>
         /// 字典类型
         /// </summary>
-        public virtual InfDictType DictType { get; set; }
+        public virtual InfStationType DictType { get; set; }
     }
 }

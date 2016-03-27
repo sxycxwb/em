@@ -11,53 +11,57 @@ using System.Threading.Tasks;
 namespace EM.Entities
 {
     /// <summary>
-    /// 电厂
+    /// 维保记录    
     /// </summary>
-    [Table("Inf_Station")]
-    public class InfStation : FullAuditedEntity<Guid>
+    [Table("Veh_Maintenance")]
+    public class VehMaintenance : FullAuditedEntity<Guid>
     {
         /// <summary>
-        /// 电厂地区
+        /// 车牌
         /// </summary>
-        public virtual InfZone StationZone { get; set; }
+        public virtual string NumberPlate { get; set; }
 
 
         /// <summary>
-        /// 电厂类型
+        /// 车辆品牌
         /// </summary>
-        public virtual InfZone StationType { get; set; }
+        public virtual string Brand { get; set; }
 
         /// <summary>
-        /// 电厂名称
+        /// 车辆类型
         /// </summary>
-        [Required]
-        public virtual string StationName { get; set; }
+        public virtual string Type { get; set; }
 
         /// <summary>
-        /// 投产时间
+        /// 车辆颜色
+        /// </summary>
+        public virtual string Color { get; set; }
+
+        /// <summary>
+        /// 发动机编号
+        /// </summary>
+        public virtual string EngineNumber { get; set; }
+
+        /// <summary>
+        /// 出厂日期
         /// </summary>
         [Required]
         public virtual DateTime ProductionTime { get; set; }
 
         /// <summary>
-        /// 股权比例
+        /// 行驶里程
         /// </summary>
         public virtual int OwnershipRatio { get; set; }
 
         /// <summary>
-        /// 装机台数
+        /// 累积费用
         /// </summary>
         public virtual int MachineNumber { get; set; }
 
         /// <summary>
-        /// 型号
+        /// 使用单位
         /// </summary>
         public virtual string MachineModel { get; set; }
-
-        /// <summary>
-        /// 装机容量
-        /// </summary>
-        public virtual string MachineCapacity { get; set; }
 
     }
 }

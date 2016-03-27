@@ -87,7 +87,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authorization\Inf_Stations\PermissionNames.cs" />
+    <Compile Include="Authorization\InfStations\PermissionNames.cs" />
     <Compile Include="EMConsts.cs" />
     <Compile Include="EMCoreModule.cs" />
     <Compile Include="Authorization\EMAuthorizationProvider.cs" />
@@ -96,10 +96,13 @@
     <Compile Include="Authorization\Roles\AppRoleConfig.cs" />
     <Compile Include="Authorization\Roles\StaticRoleNames.cs" />
     <Compile Include="Editions\EditionManager.cs" />
-    <Compile Include="Entities\InfDictData.cs" />
+    <Compile Include="Entities\VehMaintenance.cs" />
+    <Compile Include="Entities\VehUseRecord.cs" />
+    <Compile Include="Entities\VehVehicle.cs" />
+    <Compile Include="Entities\InfZone.cs" />
     <Compile Include="Entities\InfEmployer.cs" />
     <Compile Include="Entities\InfStation.cs" />
-    <Compile Include="Entities\InfDictType.cs" />
+    <Compile Include="Entities\InfStationType.cs" />
     <Compile Include="Features\FeatureValueStore.cs" />
     <Compile Include="MultiTenancy\Tenant.cs" />
     <Compile Include="MultiTenancy\TenantManager.cs" />

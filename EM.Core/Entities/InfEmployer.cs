@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 namespace EM.Entities
 {
     /// <summary>
-    /// 电厂
+    /// 人员
     /// </summary>
     [Table("Inf_Employer")]
     public class InfEmployer : FullAuditedEntity<Guid>
     {
         /// <summary>
-        /// 员工姓名
+        /// 人员姓名
         /// </summary>
         [Required]
         public virtual string Name { get; set; }
@@ -32,24 +32,17 @@ namespace EM.Entities
         /// </summary>
         [Required]
         public virtual string Duty { get; set; }
-
+        /// <summary>
+        /// 学历
+        /// </summary>
+        public virtual string Education { get; set; }
         /// <summary>
         /// 联系方式
         /// </summary>
         public virtual string Contact { get; set; }
 
         /// <summary>
-        /// 学历
-        /// </summary>
-        public virtual string Education { get; set; }
-
-        /// <summary>
-        /// 装机容量
-        /// </summary>
-        public virtual string MachineCapacity { get; set; }
-
-        /// <summary>
-        /// 电厂
+        /// 单位
         /// </summary>
         public virtual InfStation Station { get; set; }
 

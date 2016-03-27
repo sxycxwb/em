@@ -16,10 +16,10 @@ namespace EM.Authorization
             }
 
             //电厂管理
-            var inf_Station = context.CreatePermission(PermissionNames.Inf_Station, L("Inf_Station"));
-            inf_Station.CreateChildPermission(PermissionNames.Inf_Station_CreateInf_Station, L("CreateInf_Station"));
-            inf_Station.CreateChildPermission(PermissionNames.Inf_Station_UpdateInf_Station, L("UpdateInf_Station"));
-            inf_Station.CreateChildPermission(PermissionNames.Inf_Station_DeleteInf_Station, L("DeleteInf_Station"));
+            var inf_Station = context.CreatePermission(PermissionNames.InfStation, L("Inf_Station"));
+            inf_Station.CreateChildPermission(PermissionNames.InfStation_CreateInfStation, L("CreateInf_Station"));
+            inf_Station.CreateChildPermission(PermissionNames.InfStation_UpdateInfStation, L("UpdateInf_Station"));
+            inf_Station.CreateChildPermission(PermissionNames.InfStation_DeleteInfStation, L("DeleteInf_Station"));
 
             //Host permissions
             var tenants = pages.CreateChildPermission(PermissionNames.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);

@@ -121,6 +121,14 @@
     <Compile Include="Migrations\201603250836306_InitDatas.Designer.cs">
       <DependentUpon>201603250836306_InitDatas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603251402053_ModifyModel.cs" />
+    <Compile Include="Migrations\201603251402053_ModifyModel.Designer.cs">
+      <DependentUpon>201603251402053_ModifyModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603261153505_ModifyEmployer.cs" />
+    <Compile Include="Migrations\201603261153505_ModifyEmployer.Designer.cs">
+      <DependentUpon>201603261153505_ModifyEmployer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="EMDataModule.cs" />
     <Compile Include="Migrations\SeedData\DefaultEditionsBuilder.cs" />
@@ -142,6 +150,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603250836306_InitDatas.resx">
       <DependentUpon>201603250836306_InitDatas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603251402053_ModifyModel.resx">
+      <DependentUpon>201603251402053_ModifyModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603261153505_ModifyEmployer.resx">
+      <DependentUpon>201603261153505_ModifyEmployer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
