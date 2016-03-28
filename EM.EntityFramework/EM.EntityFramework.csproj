@@ -117,13 +117,9 @@
   <ItemGroup>
     <Compile Include="EntityFramework\EMDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\EMRepositoryBase.cs" />
-    <Compile Include="Migrations\201603271456474_InitData.cs" />
-    <Compile Include="Migrations\201603271456474_InitData.Designer.cs">
-      <DependentUpon>201603271456474_InitData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603271513285_ModifyModel.cs" />
-    <Compile Include="Migrations\201603271513285_ModifyModel.Designer.cs">
-      <DependentUpon>201603271513285_ModifyModel.cs</DependentUpon>
+    <Compile Include="Migrations\201603281352478_InitData.cs" />
+    <Compile Include="Migrations\201603281352478_InitData.Designer.cs">
+      <DependentUpon>201603281352478_InitData.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="EMDataModule.cs" />
@@ -144,11 +140,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603271456474_InitData.resx">
-      <DependentUpon>201603271456474_InitData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603271513285_ModifyModel.resx">
-      <DependentUpon>201603271513285_ModifyModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603281352478_InitData.resx">
+      <DependentUpon>201603281352478_InitData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

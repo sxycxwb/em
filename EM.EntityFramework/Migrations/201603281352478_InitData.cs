@@ -92,27 +92,6 @@ namespace EM.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Inf_Zone",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        DictValue = c.String(nullable: false, unicode: false),
-                        DictType_Id = c.Guid(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Inf_StationType", t => t.DictType_Id)
-                .Index(t => t.DictType_Id);
-            
-            CreateTable(
-                "dbo.Inf_StationType",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        TypeName = c.String(nullable: false, unicode: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
                 "dbo.Inf_Employer",
                 c => new
                     {
@@ -163,6 +142,27 @@ namespace EM.Migrations
                     { "DynamicFilter_InfStation_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Inf_StationType",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        TypeName = c.String(nullable: false, unicode: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Inf_Zone",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        DictValue = c.String(nullable: false, unicode: false),
+                        DictType_Id = c.Guid(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Inf_StationType", t => t.DictType_Id)
+                .Index(t => t.DictType_Id);
             
             CreateTable(
                 "dbo.AbpLanguages",
@@ -472,6 +472,90 @@ namespace EM.Migrations
                 })
                 .PrimaryKey(t => t.Id);
             
+            CreateTable(
+                "dbo.Veh_Maintenance",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        UseCompanyId = c.Guid(nullable: false),
+                        NumberPlate = c.String(unicode: false),
+                        Brand = c.String(unicode: false),
+                        TripDistance = c.Int(nullable: false),
+                        Date = c.DateTime(nullable: false, precision: 0),
+                        Type = c.String(unicode: false),
+                        Costs = c.Int(nullable: false),
+                        DutyPerson = c.String(unicode: false),
+                        Contact = c.String(unicode: false),
+                        Description = c.String(unicode: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                        DeleterUserId = c.Long(),
+                        DeletionTime = c.DateTime(precision: 0),
+                        LastModificationTime = c.DateTime(precision: 0),
+                        LastModifierUserId = c.Long(),
+                        CreationTime = c.DateTime(nullable: false, precision: 0),
+                        CreatorUserId = c.Long(),
+                    },
+                annotations: new Dictionary<string, object>
+                {
+                    { "DynamicFilter_VehMaintenance_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
+                })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Veh_UseRecord",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        UseCompanyId = c.Guid(nullable: false),
+                        NumberPlate = c.String(unicode: false),
+                        Brand = c.String(unicode: false),
+                        GoOutDate = c.DateTime(nullable: false, precision: 0),
+                        GoBackDate = c.DateTime(nullable: false, precision: 0),
+                        DutyPerson = c.String(unicode: false),
+                        Contact = c.String(unicode: false),
+                        Description = c.String(unicode: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                        DeleterUserId = c.Long(),
+                        DeletionTime = c.DateTime(precision: 0),
+                        LastModificationTime = c.DateTime(precision: 0),
+                        LastModifierUserId = c.Long(),
+                        CreationTime = c.DateTime(nullable: false, precision: 0),
+                        CreatorUserId = c.Long(),
+                    },
+                annotations: new Dictionary<string, object>
+                {
+                    { "DynamicFilter_VehUseRecord_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
+                })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Veh_Vehicle",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        NumberPlate = c.String(unicode: false),
+                        Brand = c.String(unicode: false),
+                        Type = c.String(unicode: false),
+                        Color = c.String(unicode: false),
+                        EngineNumber = c.String(unicode: false),
+                        ProductionTime = c.DateTime(nullable: false, precision: 0),
+                        TripDistance = c.Int(nullable: false),
+                        AccumulatedCosts = c.Int(nullable: false),
+                        UseCompanyId = c.Guid(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                        DeleterUserId = c.Long(),
+                        DeletionTime = c.DateTime(precision: 0),
+                        LastModificationTime = c.DateTime(precision: 0),
+                        LastModifierUserId = c.Long(),
+                        CreationTime = c.DateTime(nullable: false, precision: 0),
+                        CreatorUserId = c.Long(),
+                    },
+                annotations: new Dictionary<string, object>
+                {
+                    { "DynamicFilter_VehVehicle_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
+                })
+                .PrimaryKey(t => t.Id);
+            
         }
         
         public override void Down()
@@ -521,6 +605,21 @@ namespace EM.Migrations
             DropIndex("dbo.Inf_Zone", new[] { "DictType_Id" });
             DropIndex("dbo.AbpFeatures", new[] { "EditionId" });
             DropIndex("dbo.AbpBackgroundJobs", new[] { "IsAbandoned", "NextTryTime" });
+            DropTable("dbo.Veh_Vehicle",
+                removedAnnotations: new Dictionary<string, object>
+                {
+                    { "DynamicFilter_VehVehicle_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
+                });
+            DropTable("dbo.Veh_UseRecord",
+                removedAnnotations: new Dictionary<string, object>
+                {
+                    { "DynamicFilter_VehUseRecord_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
+                });
+            DropTable("dbo.Veh_Maintenance",
+                removedAnnotations: new Dictionary<string, object>
+                {
+                    { "DynamicFilter_VehMaintenance_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
+                });
             DropTable("dbo.AbpUserOrganizationUnits",
                 removedAnnotations: new Dictionary<string, object>
                 {
@@ -567,6 +666,8 @@ namespace EM.Migrations
                     { "DynamicFilter_ApplicationLanguage_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                     { "DynamicFilter_ApplicationLanguage_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
+            DropTable("dbo.Inf_Zone");
+            DropTable("dbo.Inf_StationType");
             DropTable("dbo.Inf_Station",
                 removedAnnotations: new Dictionary<string, object>
                 {
@@ -577,8 +678,6 @@ namespace EM.Migrations
                 {
                     { "DynamicFilter_InfEmployer_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.Inf_StationType");
-            DropTable("dbo.Inf_Zone");
             DropTable("dbo.AbpEditions",
                 removedAnnotations: new Dictionary<string, object>
                 {
