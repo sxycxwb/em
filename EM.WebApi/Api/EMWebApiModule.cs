@@ -5,6 +5,7 @@ using Abp.Configuration.Startup;
 using Abp.Modules;
 using Abp.WebApi;
 using Abp.WebApi.Controllers.Dynamic.Builders;
+using EM.Application;
 
 namespace EM.Api
 {
@@ -18,7 +19,7 @@ namespace EM.Api
             DynamicApiControllerBuilder
                 .ForAll<IApplicationService>(typeof(EMApplicationModule).Assembly, "app")
                 .Build();
-
+            //DynamicApiControllerBuilder.For<IInfStationAppService>("em/infstation").Build();
             Configuration.Modules.AbpWebApi().HttpConfiguration.Filters.Add(new HostAuthenticationFilter("Bearer"));
         }
     }

@@ -9,13 +9,15 @@ using Abp.Linq.Extensions;
 using EM.Entities;
 using EM.Entities.Dtos;
 using EM.Authorization;
+using System;
+using Abp.Auditing;
 
 namespace EM.Application.InfStationsApp
 {
     /// <summary>
     /// 电厂服务实现
     /// </summary>
-    [AbpAuthorize(PermissionNames.InfStation)]
+    //[AbpAuthorize(PermissionNames.InfStation)]
     public class InfStationAppService : EMAppServiceBase, IInfStationAppService
     {
         private readonly IRepository<InfStation,System.Guid> _infStationRepository;
@@ -36,7 +38,6 @@ namespace EM.Application.InfStationsApp
         {
             var query = _infStationRepository.GetAll();
 			//TODO:根据传入的参数添加过滤条件
-
 			var infStationCount = query.Count();
             var infStations = query
                 .OrderBy(d => input.Sorting)
@@ -50,11 +51,12 @@ namespace EM.Application.InfStationsApp
                );
         }
 
-
+        
         /// <summary>
         /// 获取指定id的电厂信息
         /// </summary>
-        public async Task<InfStationEditDto> GetInfStation(System.Guid id)
+        [Audited]
+        public async Task<InfStationEditDto> GetInfStation(Guid id)
         {
             var entity = await _infStationRepository.GetAsync(id);
             return entity.MapTo<InfStationEditDto>();

@@ -366,6 +366,7 @@
     <Content Include="App\Main\views\home\home.cshtml" />
     <Content Include="App\Main\views\about\about.cshtml" />
     <Content Include="App\Main\web.config" />
+    <Content Include="HtmlPage1.html" />
     <Content Include="log4net.config" />
     <Content Include="App\Main\views\layout\header.cshtml" />
     <Content Include="Scripts\angular-animate.js" />

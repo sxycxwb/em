@@ -104,6 +104,7 @@
     <Compile Include="Entities\InfStation.cs" />
     <Compile Include="Entities\InfStationType.cs" />
     <Compile Include="Features\FeatureValueStore.cs" />
+    <Compile Include="IRepositories\IInfStationRepository.cs" />
     <Compile Include="MultiTenancy\Tenant.cs" />
     <Compile Include="MultiTenancy\TenantManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,6 +127,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Localization\Source\EM-pt-BR.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

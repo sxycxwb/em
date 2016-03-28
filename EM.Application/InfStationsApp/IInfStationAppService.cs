@@ -5,7 +5,7 @@ using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using EM.Entities.Dtos;
 
-namespace EM.Application.InfStationsApp
+namespace EM.Application
 {
 	/// <summary>
     /// 电厂服务接口
@@ -23,7 +23,7 @@ namespace EM.Application.InfStationsApp
         /// <summary>
         /// 获取指定id的电厂信息
         /// </summary>
-        Task<InfStationEditDto> GetInfStation(System.Guid id);
+        Task<InfStationEditDto> GetInfStation(Guid id);
 
         /// <summary>
         /// 新增或更改电厂
