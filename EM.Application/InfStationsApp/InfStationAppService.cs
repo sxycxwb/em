@@ -11,6 +11,7 @@ using EM.Entities.Dtos;
 using EM.Authorization;
 using System;
 using Abp.Auditing;
+using EM.IRepositories;
 
 namespace EM.Application.InfStationsApp
 {
@@ -20,14 +21,17 @@ namespace EM.Application.InfStationsApp
     //[AbpAuthorize(PermissionNames.InfStation)]
     public class InfStationAppService : EMAppServiceBase, IInfStationAppService
     {
-        private readonly IRepository<InfStation,System.Guid> _infStationRepository;
+        private readonly IInfStationRepository _infStationRepository;
 
-        public InfStationAppService(
-            IRepository<InfStation,System.Guid> infStationRepository
-            )
+        public InfStationAppService(IInfStationRepository infStationRepository)
         {
             _infStationRepository = infStationRepository;
         }
+
+        //public InfStationAppService(IRepository<InfStation,System.Guid> infStationRepository)
+        //{
+        //    _infStationRepository = infStationRepository;
+        //}
 
         #region 电厂管理
 
@@ -36,14 +40,16 @@ namespace EM.Application.InfStationsApp
         /// </summary>
         public async Task<PagedResultOutput<InfStationListDto>> GetPagedInfStations(GetInfStationInput input)
         {
-            var query = _infStationRepository.GetAll();
-			//TODO:根据传入的参数添加过滤条件
-			var infStationCount = query.Count();
-            var infStations = query
-                .OrderBy(d => input.Sorting)
-                .PageBy(input)
-                .ToList();
+            //         var query = _infStationRepository.GetAll();
+            ////TODO:根据传入的参数添加过滤条件
+            //var infStationCount = query.Count();
+            //         var infStations = query
+            //             .OrderBy(d => input.Sorting)
+            //             .PageBy(input)
+            //             .ToList();
 
+            var infStations = _infStationRepository.GetPagedInfStations(input.Filter, input.Sorting, input.SkipCount, input.MaxResultCount);
+            var infStationCount = 1;
             var infStationListDtos = infStations.MapTo<List<InfStationListDto>>();
             return new PagedResultOutput<InfStationListDto>(
                 infStationCount,

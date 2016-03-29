@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Abp.Domain.Entities;
 using Abp.EntityFramework;
 using Abp.EntityFramework.Repositories;
+using System;
 
 namespace EM.EntityFramework.Repositories
 {
@@ -20,8 +21,8 @@ namespace EM.EntityFramework.Repositories
     
     }
 
-    public abstract class EMRepositoryBase<TEntity> : EMRepositoryBase<TEntity, int>
-        where TEntity : class, IEntity<int>
+    public abstract class EMRepositoryBase<TEntity> : EMRepositoryBase<TEntity, Guid>
+        where TEntity : class, IEntity<Guid>
     {
         protected EMRepositoryBase(IDbContextProvider<EMDbContext> dbContextProvider)
             : base(dbContextProvider)

@@ -10,6 +10,6 @@ namespace EM.IRepositories
 {
     public interface IInfStationRepository : IRepository<InfStation, System.Guid>
     {
-        //List<InfStation> GetPagedInfStations(GetInfStationInput input);
+        List<InfStationView> GetPagedInfStations(string Filter,string Sorting,int skipCount,int pageSize);
     }
 }

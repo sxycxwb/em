@@ -11,10 +11,9 @@ using System.Threading.Tasks;
 namespace EM.Entities
 {
     /// <summary>
-    /// 电厂
+    /// 电厂视图
     /// </summary>
-    [Table("Inf_Station")]
-    public class InfStation : FullAuditedEntity<Guid>
+    public class InfStationView : FullAuditedEntity<Guid>
     {
         /// <summary>
         /// 地区ID
@@ -22,9 +21,19 @@ namespace EM.Entities
         public virtual Guid ZoneId { get; set; }
 
         /// <summary>
+        /// 地区名称
+        /// </summary>
+        public virtual string ZoneName { get; set; }
+
+        /// <summary>
         /// 类型Id
         /// </summary>
         public virtual Guid TypeId { get; set; }
+
+        /// <summary>
+        /// 类型名称
+        /// </summary>
+        public virtual string TypeName { get; set; }
 
         /// <summary>
         /// 电厂名称

@@ -5,7 +5,7 @@ namespace EM.Migrations
     using System.Data.Entity.Infrastructure.Annotations;
     using System.Data.Entity.Migrations;
     
-    public partial class InitData : DbMigration
+    public partial class initData : DbMigration
     {
         public override void Up()
         {
@@ -157,12 +157,9 @@ namespace EM.Migrations
                 c => new
                     {
                         Id = c.Guid(nullable: false),
-                        DictValue = c.String(nullable: false, unicode: false),
-                        DictType_Id = c.Guid(),
+                        ZoneName = c.String(nullable: false, unicode: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Inf_StationType", t => t.DictType_Id)
-                .Index(t => t.DictType_Id);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AbpLanguages",
@@ -579,7 +576,6 @@ namespace EM.Migrations
             DropForeignKey("dbo.AbpUsers", "DeleterUserId", "dbo.AbpUsers");
             DropForeignKey("dbo.AbpUsers", "CreatorUserId", "dbo.AbpUsers");
             DropForeignKey("dbo.AbpOrganizationUnits", "ParentId", "dbo.AbpOrganizationUnits");
-            DropForeignKey("dbo.Inf_Zone", "DictType_Id", "dbo.Inf_StationType");
             DropForeignKey("dbo.AbpFeatures", "EditionId", "dbo.AbpEditions");
             DropIndex("dbo.AbpUserNotifications", new[] { "UserId", "State", "CreationTime" });
             DropIndex("dbo.AbpTenants", new[] { "CreatorUserId" });
@@ -602,7 +598,6 @@ namespace EM.Migrations
             DropIndex("dbo.AbpPermissions", new[] { "RoleId" });
             DropIndex("dbo.AbpOrganizationUnits", new[] { "ParentId" });
             DropIndex("dbo.AbpNotificationSubscriptions", new[] { "NotificationName", "EntityTypeName", "EntityId", "UserId" });
-            DropIndex("dbo.Inf_Zone", new[] { "DictType_Id" });
             DropIndex("dbo.AbpFeatures", new[] { "EditionId" });
             DropIndex("dbo.AbpBackgroundJobs", new[] { "IsAbandoned", "NextTryTime" });
             DropTable("dbo.Veh_Vehicle",

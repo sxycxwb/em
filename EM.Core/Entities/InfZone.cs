@@ -19,11 +19,6 @@ namespace EM.Entities
         /// 区域
         /// </summary>
         [Required]
-        public virtual string DictValue { get; set; }
-
-        /// <summary>
-        /// 字典类型
-        /// </summary>
-        public virtual InfStationType DictType { get; set; }
+        public virtual string ZoneName { get; set; }
     }
 }
