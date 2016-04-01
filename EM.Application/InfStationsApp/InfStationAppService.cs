@@ -47,6 +47,13 @@ namespace EM.Application.InfStationsApp
             //             .OrderBy(d => input.Sorting)
             //             .PageBy(input)
             //             .ToList();
+            using (var conn = new System.Data.SqlClient.SqlConnection(ConnString))
+            {
+                conn.Open();
+                var a = conn.Query<Person>("select * from Person where id>@id", new { id = 2 });
+                conn.Close();
+                return a.ToList();
+            }
 
             var infStations = _infStationRepository.GetPagedInfStations(input.Filter, input.Sorting, input.SkipCount, input.MaxResultCount);
             var infStationCount = 1;
