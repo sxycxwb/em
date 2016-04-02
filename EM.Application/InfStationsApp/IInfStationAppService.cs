@@ -25,25 +25,20 @@ namespace EM.Application
         /// </summary>
         Task<InfStationEditDto> GetInfStation(Guid id);
 
-        /// <summary>
-        /// 新增或更改电厂
-        /// </summary>
-        Task CreateOrUpdateInfStation(CreateOrUpdateInfStationInput input);
+        ///// <summary>
+        ///// 新增电厂
+        ///// </summary>
+        //Task<InfStationEditDto> CreateInfStation(InfStationEditDto input);
 
-        /// <summary>
-        /// 新增电厂
-        /// </summary>
-        Task<InfStationEditDto> CreateInfStation(InfStationEditDto input);
+        ///// <summary>
+        ///// 更新电厂
+        ///// </summary>
+        //Task UpdateInfStation(InfStationEditDto input);
 
-        /// <summary>
-        /// 更新电厂
-        /// </summary>
-        Task UpdateInfStation(InfStationEditDto input);
-
-        /// <summary>
-        /// 删除电厂
-        /// </summary>
-        Task DeleteInfStation(IdInput<System.Guid> input);
+        ///// <summary>
+        ///// 删除电厂
+        ///// </summary>
+        //Task DeleteInfStation(IdInput<System.Guid> input);
 
         #endregion
 

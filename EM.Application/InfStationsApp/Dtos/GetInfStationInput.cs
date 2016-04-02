@@ -19,6 +19,11 @@ namespace EM.Entities.Dtos
 		/// </summary>
 		public string Filter { get; set; }
 
+        /// <summary>
+        /// 电厂名称
+        /// </summary>
+        public virtual string StationName { get; set; }
+
         public void Normalize()
         {
             if (string.IsNullOrEmpty(Sorting))

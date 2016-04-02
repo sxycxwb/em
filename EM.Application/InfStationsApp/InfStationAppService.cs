@@ -11,7 +11,7 @@ using EM.Entities.Dtos;
 using EM.Authorization;
 using System;
 using Abp.Auditing;
-using EM.IRepositories;
+using Dapper;
 
 namespace EM.Application.InfStationsApp
 {
@@ -21,17 +21,13 @@ namespace EM.Application.InfStationsApp
     //[AbpAuthorize(PermissionNames.InfStation)]
     public class InfStationAppService : EMAppServiceBase, IInfStationAppService
     {
-        private readonly IInfStationRepository _infStationRepository;
+        private readonly IRepository _infStationRepository;
 
-        public InfStationAppService(IInfStationRepository infStationRepository)
+
+        public InfStationAppService(IRepository<InfStation, System.Guid> infStationRepository)
         {
             _infStationRepository = infStationRepository;
         }
-
-        //public InfStationAppService(IRepository<InfStation,System.Guid> infStationRepository)
-        //{
-        //    _infStationRepository = infStationRepository;
-        //}
 
         #region 电厂管理
 
@@ -40,89 +36,80 @@ namespace EM.Application.InfStationsApp
         /// </summary>
         public async Task<PagedResultOutput<InfStationListDto>> GetPagedInfStations(GetInfStationInput input)
         {
-            //         var query = _infStationRepository.GetAll();
-            ////TODO:根据传入的参数添加过滤条件
-            //var infStationCount = query.Count();
-            //         var infStations = query
-            //             .OrderBy(d => input.Sorting)
-            //             .PageBy(input)
-            //             .ToList();
-            using (var conn = new System.Data.SqlClient.SqlConnection(ConnString))
+            string querySql = "SELECT A.*,B.TYPENAME,C.ZONENAME FROM INF_STATION A,INF_STATIONTYPE B,INF_ZONE C WHERE A.ZONEID = C.ID AND A.TYPEID=B.ID ";
+
+            //TODO:根据传入的参数添加过滤条件
+            var param = new DynamicParameters();
+            if (!string.IsNullOrEmpty(input.StationName))
             {
-                conn.Open();
-                var a = conn.Query<Person>("select * from Person where id>@id", new { id = 2 });
-                conn.Close();
-                return a.ToList();
+                querySql += " AND STATIONNAME LIKE @STATIONNAME";
+                param.Add("STATIONNAME", "%" + input.StationName + "%");
             }
 
-            var infStations = _infStationRepository.GetPagedInfStations(input.Filter, input.Sorting, input.SkipCount, input.MaxResultCount);
-            var infStationCount = 1;
-            var infStationListDtos = infStations.MapTo<List<InfStationListDto>>();
-            return new PagedResultOutput<InfStationListDto>(
-                infStationCount,
-                infStationListDtos
-               );
+            using (var conn = DBUtility.GetMySqlConnection())
+            {
+                var infStationCount = conn.ExecuteScalar(DBUtility.GetCountSql(querySql)).ToString();
+                var infStationListDtos = conn.Query<InfStationListDto>(DBUtility.GetPagedAndSortedSql(querySql, input.Sorting, input.SkipCount, input.MaxResultCount), param).ToList();
+                return new PagedResultOutput<InfStationListDto>(int.Parse(infStationCount), infStationListDtos);
+            }
         }
 
-        
+
         /// <summary>
         /// 获取指定id的电厂信息
         /// </summary>
         [Audited]
-        public async Task<InfStationEditDto> GetInfStation(Guid id)
+        public async Task<InfStationEditDto> GetInfStation(InfStationEditDto input)
         {
-            var entity = await _infStationRepository.GetAsync(id);
-            return entity.MapTo<InfStationEditDto>();
-        }
+            string querySql = "SELECT A.*,B.TYPENAME,C.ZONENAME FROM INF_STATION A,INF_STATIONTYPE B,INF_ZONE C WHERE A.ZONEID = C.ID AND A.TYPEID=B.ID ";
 
-        /// <summary>
-        /// 新增或更改电厂
-        /// </summary>
-        public async Task CreateOrUpdateInfStation(CreateOrUpdateInfStationInput input)
-        {
-            if (input.InfStationEditDto.Id.HasValue)
+            //TODO:根据传入的参数添加过滤条件
+            var param = new DynamicParameters();
+            if (!string.IsNullOrEmpty(input.Id.ToString()))
             {
-				await UpdateInfStation(input.InfStationEditDto);
+                querySql += " AND ID =@ID";
+                param.Add("ID", input.Id);
             }
-            else
+            using (var conn = DBUtility.GetMySqlConnection())
             {
-                await CreateInfStation(input.InfStationEditDto);
+                var infStationListDtos = conn.Query<InfStationEditDto>(querySql, param).FirstOrDefault();
+                return infStationListDtos;
             }
         }
 
-        /// <summary>
-        /// 新增电厂
-        /// </summary>
-        [AbpAuthorize(PermissionNames.InfStation_CreateInfStation)]
-        public virtual async Task<InfStationEditDto> CreateInfStation(InfStationEditDto input)
-        {
-            //TODO:新增前的逻辑判断，是否允许新增
+        ///// <summary>
+        ///// 新增电厂
+        ///// </summary>
+        //[AbpAuthorize(PermissionNames.InfStation_CreateInfStation)]
+        //public virtual async Task<InfStationEditDto> CreateInfStation(InfStationEditDto input)
+        //{
+        //    //TODO:新增前的逻辑判断，是否允许新增
 
-            var entity = await _infStationRepository.InsertAsync(input.MapTo<InfStation>());
-            return entity.MapTo<InfStationEditDto>();
-        }
+        //    var entity = await _infStationRepository.InsertAsync(input.MapTo<InfStation>());
+        //    return entity.MapTo<InfStationEditDto>();
+        //}
 
-        /// <summary>
-        /// 更新电厂
-        /// </summary>
-        [AbpAuthorize(PermissionNames.InfStation_UpdateInfStation)]
-        public virtual async Task UpdateInfStation(InfStationEditDto input)
-        {
-            //TODO:更新前的逻辑判断，是否允许更新
+        ///// <summary>
+        ///// 更新电厂
+        ///// </summary>
+        //[AbpAuthorize(PermissionNames.InfStation_UpdateInfStation)]
+        //public virtual async Task UpdateInfStation(InfStationEditDto input)
+        //{
+        //    //TODO:更新前的逻辑判断，是否允许更新
 
-            var entity = await _infStationRepository.GetAsync(input.Id.Value);
-            await _infStationRepository.UpdateAsync(input.MapTo(entity));
-        }
+        //    var entity = await _infStationRepository.GetAsync(input.Id.Value);
+        //    await _infStationRepository.UpdateAsync(input.MapTo(entity));
+        //}
 
-        /// <summary>
-        /// 删除电厂
-        /// </summary>
-        [AbpAuthorize(PermissionNames.InfStation_DeleteInfStation)]
-        public async Task DeleteInfStation(IdInput<System.Guid> input)
-        {
-            //TODO:删除前的逻辑判断，是否允许删除
-            await _infStationRepository.DeleteAsync(input.Id);
-        }
+        ///// <summary>
+        ///// 删除电厂
+        ///// </summary>
+        //[AbpAuthorize(PermissionNames.InfStation_DeleteInfStation)]
+        //public async Task DeleteInfStation(IdInput<System.Guid> input)
+        //{
+        //    //TODO:删除前的逻辑判断，是否允许删除
+        //    await _infStationRepository.DeleteAsync(input.Id);
+        //}
 
 
 

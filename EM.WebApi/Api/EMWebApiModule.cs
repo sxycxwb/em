@@ -17,7 +17,7 @@ namespace EM.Api
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
 
             DynamicApiControllerBuilder
-                .ForAll<IApplicationService>(typeof(EMApplicationModule).Assembly, "app")
+                .ForAll<IApplicationService>(typeof(EMApplicationModule).Assembly, "em")
                 .Build();
             //DynamicApiControllerBuilder.For<IInfStationAppService>("em/infstation").Build();
             Configuration.Modules.AbpWebApi().HttpConfiguration.Filters.Add(new HostAuthenticationFilter("Bearer"));

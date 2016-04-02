@@ -102,10 +102,8 @@
     <Compile Include="Entities\VehVehicle.cs" />
     <Compile Include="Entities\InfZone.cs" />
     <Compile Include="Entities\InfEmployer.cs" />
-    <Compile Include="EntitiesView\InfStationView.cs" />
     <Compile Include="Entities\InfStationType.cs" />
     <Compile Include="Features\FeatureValueStore.cs" />
-    <Compile Include="IRepositories\IInfStationRepository.cs" />
     <Compile Include="MultiTenancy\Tenant.cs" />
     <Compile Include="MultiTenancy\TenantManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

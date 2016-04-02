@@ -11,21 +11,40 @@ namespace EM.Entities.Dtos
     /// <summary>
     /// 电厂编辑用Dto
     /// </summary>
-    [AutoMap(typeof(InfStation))]
     public class InfStationEditDto : IValidate
     {
 
 		public System.Guid? Id {get;set;}
+
+        /// <summary>
+        /// 地区ID
+        /// </summary>
+        public virtual Guid ZoneId { get; set; }
+
+        /// <summary>
+        /// 地区名称
+        /// </summary>
+        public virtual string ZoneName { get; set; }
+
+        /// <summary>
+        /// 类型Id
+        /// </summary>
+        public virtual Guid TypeId { get; set; }
+
+        /// <summary>
+        /// 类型名称
+        /// </summary>
+        public virtual string TypeName { get; set; }
+
+
         /// <summary>
         /// 电厂名称
         /// </summary>
-        [Required]
         public string StationName { get; set; }
 
         /// <summary>
         /// 投产时间
         /// </summary>
-        [Required]
         public DateTime ProductionTime { get; set; }
 
         /// <summary>
