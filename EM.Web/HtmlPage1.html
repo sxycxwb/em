@@ -9,14 +9,22 @@
         $(function () {
             $('#btnTest').click(function () {
                 $.ajax({
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
                     //提交数据的类型 POST GET
                     type: "POST",
                     //提交的网址
-                    url: "/api/services/app/InfStation/GetInfStation?id=d2ae6fb5-fbd7-4eec-8bcb-dfd631e03c36",
+                    url: "http://localhost:6634/api/services/em/InfStation/CreateInfStation",
                     //提交的数据
-                    data: JSON.stringify({
-                        id: "123123123"
-                    }),
+                    data: {
+                        "ZoneId": "e46ea6a5-e9ed-4f9e-b18b-4ec700f19fd9",
+                        "TypeId": "12b48bbb-a3fa-4ca7-9d7d-7154a473562e",
+                        "ProductionTime": "2015-10-01",
+                        "OwnershipRatio": "1",
+                        "MachineNumber": "65",
+                        "name": "123",
+                        "MachineCapacity": "49.5",
+                        "StationName": "随碟附送"
+                    },
                     //返回数据的格式
                     datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
                     //在请求之前调用的函数

@@ -29,13 +29,11 @@ namespace EM.Entities
         /// <summary>
         /// 电厂名称
         /// </summary>
-        [Required]
         public virtual string StationName { get; set; }
 
         /// <summary>
         /// 投产时间
         /// </summary>
-        [Required]
         public virtual DateTime ProductionTime { get; set; }
 
         /// <summary>

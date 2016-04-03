@@ -87,7 +87,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authorization\InfStations\PermissionNames.cs" />
+    <Compile Include="Authorization\EmInf\InfEmployers\PermissionNames.cs" />
+    <Compile Include="Authorization\EmInf\InfStations\PermissionNames.cs" />
+    <Compile Include="Authorization\EmVeh\VehMaintenances\PermissionNames.cs" />
+    <Compile Include="Authorization\EmVeh\VehUseRecords\PermissionNames.cs" />
+    <Compile Include="Authorization\EmVeh\VehVehicles\PermissionNames.cs" />
     <Compile Include="EMConsts.cs" />
     <Compile Include="EMCoreModule.cs" />
     <Compile Include="Authorization\EMAuthorizationProvider.cs" />

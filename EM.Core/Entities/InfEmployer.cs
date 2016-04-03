@@ -46,11 +46,5 @@ namespace EM.Entities
         /// </summary>
         public virtual Guid StationId { get; set; }
 
-        /// <summary>
-        /// 单位名称
-        /// </summary>
-        [NotMapped]
-        public string StationName { get; set; }
-
     }
 }

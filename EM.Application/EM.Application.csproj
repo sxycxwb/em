@@ -61,10 +61,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
-    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
       <Private>True</Private>
@@ -105,19 +101,47 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppConsts.cs" />
+    <Compile Include="Auditing\AuditLogAndUser.cs" />
+    <Compile Include="Auditing\AuditLogAppService.cs" />
+    <Compile Include="Auditing\Dto\AuditLogListDto.cs" />
+    <Compile Include="Auditing\Dto\GetAuditLogsInput.cs" />
+    <Compile Include="Auditing\Exporting\AuditLogListExcelExporter.cs" />
+    <Compile Include="Auditing\Exporting\IAuditLogListExcelExporter.cs" />
+    <Compile Include="Auditing\IAuditLogAppService.cs" />
+    <Compile Include="Dto\DeleteDto.cs" />
     <Compile Include="Dto\FileDto.cs" />
     <Compile Include="Dto\PagedAndFilteredInputDto.cs" />
     <Compile Include="Dto\PagedAndSortedInputDto.cs" />
+    <Compile Include="Dto\CreateOrUpdateDto.cs" />
     <Compile Include="Dto\PagedInputDto.cs" />
     <Compile Include="Dto\PagedSortedAndFilteredInputDto.cs" />
     <Compile Include="EMApplicationModule.cs" />
     <Compile Include="EMAppServiceBase.cs" />
-    <Compile Include="InfStationsApp\Dtos\CreateOrUpdateInfStationInput.cs" />
-    <Compile Include="InfStationsApp\Dtos\GetInfStationInput.cs" />
-    <Compile Include="InfStationsApp\Dtos\InfStationEditDto.cs" />
-    <Compile Include="InfStationsApp\Dtos\InfStationListDto.cs" />
-    <Compile Include="InfStationsApp\IInfStationAppService.cs" />
-    <Compile Include="InfStationsApp\InfStationAppService.cs" />
+    <Compile Include="EmInf\InfEmployersApp\Dtos\GetInfEmployerInput.cs" />
+    <Compile Include="EmInf\InfEmployersApp\Dtos\InfEmployerEditDto.cs" />
+    <Compile Include="EmInf\InfEmployersApp\Dtos\InfEmployerListDto.cs" />
+    <Compile Include="EmInf\InfEmployersApp\IInfEmployerAppService.cs" />
+    <Compile Include="EmInf\InfEmployersApp\InfEmployerAppService.cs" />
+    <Compile Include="EmInf\InfStationsApp\Dtos\GetInfStationInput.cs" />
+    <Compile Include="EmInf\InfStationsApp\Dtos\InfStationEditDto.cs" />
+    <Compile Include="EmInf\InfStationsApp\Dtos\InfStationListDto.cs" />
+    <Compile Include="EmInf\InfStationsApp\IInfStationAppService.cs" />
+    <Compile Include="EmInf\InfStationsApp\InfStationAppService.cs" />
+    <Compile Include="EmVeh\VehMaintenancesApp\Dtos\GetVehMaintenanceInput.cs" />
+    <Compile Include="EmVeh\VehMaintenancesApp\Dtos\VehMaintenanceEditDto.cs" />
+    <Compile Include="EmVeh\VehMaintenancesApp\Dtos\VehMaintenanceListDto.cs" />
+    <Compile Include="EmVeh\VehMaintenancesApp\IVehMaintenanceAppService.cs" />
+    <Compile Include="EmVeh\VehMaintenancesApp\VehMaintenanceAppService.cs" />
+    <Compile Include="EmVeh\VehUseRecordsApp\Dtos\GetVehUseRecordInput.cs" />
+    <Compile Include="EmVeh\VehUseRecordsApp\Dtos\VehUseRecordEditDto.cs" />
+    <Compile Include="EmVeh\VehUseRecordsApp\Dtos\VehUseRecordListDto.cs" />
+    <Compile Include="EmVeh\VehUseRecordsApp\IVehUseRecordAppService.cs" />
+    <Compile Include="EmVeh\VehUseRecordsApp\VehUseRecordAppService.cs" />
+    <Compile Include="EmVeh\VehVehiclesApp\Dtos\GetVehVehicleInput.cs" />
+    <Compile Include="EmVeh\VehVehiclesApp\Dtos\VehVehicleEditDto.cs" />
+    <Compile Include="EmVeh\VehVehiclesApp\Dtos\VehVehicleListDto.cs" />
+    <Compile Include="EmVeh\VehVehiclesApp\IVehVehicleAppService.cs" />
+    <Compile Include="EmVeh\VehVehiclesApp\VehVehicleAppService.cs" />
     <Compile Include="MultiTenancy\Dto\CreateTenantInput.cs" />
     <Compile Include="MultiTenancy\ITenantAppService.cs" />
     <Compile Include="MultiTenancy\Dto\TenantListDto.cs" />
@@ -141,11 +165,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dapper\Dapper.csproj">
+      <Project>{342cacf7-47b1-4cde-b781-8c28ee331050}</Project>
+      <Name>Dapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EM.Core\EM.Core.csproj">
       <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
       <Name>EM.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
