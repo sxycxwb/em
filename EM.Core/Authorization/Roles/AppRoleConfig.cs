@@ -22,6 +22,12 @@ namespace EM.Authorization.Roles
                     StaticRoleNames.Tenants.Admin,
                     MultiTenancySides.Tenant)
                 );
+
+            roleManagementConfig.StaticRoles.Add(
+                new StaticRoleDefinition(
+                    StaticRoleNames.Tenants.User,
+                    MultiTenancySides.Tenant)
+                );
         }
     }
 }

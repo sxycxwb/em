@@ -1,4 +1,4 @@
-namespace EM.Authorization.Roles
+﻿namespace EM.Authorization.Roles
 {
     public static class StaticRoleNames
     {
@@ -10,6 +10,8 @@ namespace EM.Authorization.Roles
         public static class Tenants
         {
             public const string Admin = "Admin";
+
+            public const string User = "User";
         }
     }
 }

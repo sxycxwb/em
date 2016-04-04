@@ -1,4 +1,4 @@
-using Abp.Authorization.Roles;
+﻿using Abp.Authorization.Roles;
 using Abp.Authorization.Users;
 using Abp.Domain.Repositories;
 using EM.MultiTenancy;
@@ -17,6 +17,7 @@ namespace EM.Authorization.Roles
                 userRoleRepository,
                 rolePermissionSettingRepository)
         {
+
         }
     }
 }

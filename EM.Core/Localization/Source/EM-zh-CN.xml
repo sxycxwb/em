@@ -18,8 +18,52 @@
     <text name="Password" value="密码" />
     <text name="RememberMe" value="记住我" />
     <text name="LogIn" value="登录" />
-
     <text name="LoginFailed" value="登录失败!" />
+    
+    
+    <!--菜单、页面操作定义开始-->
+    <text name="Pages" value="菜单"/>
+    
+    <!--系统管理开始-->
+    <text name="SysManagement" value="系统管理"/>
+    
+    <text name="InfStation" value="电厂管理"/>
+    <text name="CreateInfStation" value="新增电厂信息"/>
+    <text name="UpdateInfStation" value="修改电厂信息"/>
+    <text name="DeleteInfStation" value="删除电厂信息"/>
+    
+    <text name="InfEmployer" value="人员管理"/>
+    <text name="CreateInfEmployer" value="新增人员信息"/>
+    <text name="UpdateInfEmployer" value="修改人员信息"/>
+    <text name="DeleteInfEmployer" value="删除人员信息"/>
+
+    <text name="InfRole" value="角色管理"/>
+    <text name="CreateInfRole" value="新增角色信息"/>
+    <text name="UpdateInfRole" value="修改角色信息"/>
+    <text name="DeleteInfRole" value="删除角色信息"/>
+    
+    <!--系统管理结束-->
+
+    <!--车辆管理开始-->
+    <text name="VehManagement" value="车辆管理"/>
+    
+    <text name="VehVehicle" value="电厂管理"/>
+    <text name="CreateVehVehicle" value="新增电厂信息"/>
+    <text name="UpdateVehVehicle" value="修改电厂信息"/>
+    <text name="DeleteVehVehicle" value="删除电厂信息"/>
+
+    <text name="VehUseRecord" value="用车记录"/>
+    <text name="CreateVehUseRecord" value="新增用车记录"/>
+    <text name="UpdateVehUseRecord" value="修改用车记录"/>
+    <text name="DeleteVehUseRecord" value="删除用车记录"/>
+
+    <text name="VehMaintenance" value="维保记录"/>
+    <text name="CreateVehMaintenance" value="新增维保记录"/>
+    <text name="UpdateVehMaintenance" value="修改维保记录"/>
+    <text name="DeleteVehMaintenance" value="删除维保记录"/>
+
+    <!--车辆管理结束-->
+    <!--菜单、页面操作定义结束-->
     
   </texts>
 </localizationDictionary>
