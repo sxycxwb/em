@@ -24,10 +24,10 @@ namespace EM.Authorization.Roles
             _roleManager = roleManager;
         }
 
-        public async Task<ListResultOutput<RoleListDto>> GetRoles()
+        public async Task<List<RoleListDto>> GetRoles()
         {
             var roles = await _roleManager.Roles.ToListAsync();
-            return new ListResultOutput<RoleListDto>(roles.MapTo<List<RoleListDto>>());
+            return new List<RoleListDto>(roles.MapTo<List<RoleListDto>>());
         }
 
         //[AbpAuthorize(AppPermissions.Pages_Administration_Roles_Create, AppPermissions.Pages_Administration_Roles_Edit)]

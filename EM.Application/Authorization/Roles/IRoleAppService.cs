@@ -2,6 +2,7 @@
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using EM.Authorization.Roles.Dto;
+using System.Collections.Generic;
 
 namespace EM.Authorization.Roles
 {
@@ -10,7 +11,7 @@ namespace EM.Authorization.Roles
     /// </summary>
     public interface IRoleAppService : IApplicationService
     {
-        Task<ListResultOutput<RoleListDto>> GetRoles();
+        Task<List<RoleListDto>> GetRoles();
 
         Task<GetRoleForEditOutput> GetInfRole(NullableIdInput input);
 
