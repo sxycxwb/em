@@ -125,6 +125,10 @@
     <Compile Include="Migrations\201604020312083_UpdateModel.Designer.cs">
       <DependentUpon>201604020312083_UpdateModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604060237039_Add-Some.cs" />
+    <Compile Include="Migrations\201604060237039_Add-Some.Designer.cs">
+      <DependentUpon>201604060237039_Add-Some.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="EMDataModule.cs" />
     <Compile Include="Migrations\SeedData\DefaultEditionsBuilder.cs" />
@@ -149,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604020312083_UpdateModel.resx">
       <DependentUpon>201604020312083_UpdateModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604060237039_Add-Some.resx">
+      <DependentUpon>201604060237039_Add-Some.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

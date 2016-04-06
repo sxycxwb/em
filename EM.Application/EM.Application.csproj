@@ -130,6 +130,7 @@
     <Compile Include="Authorization\Roles\Dto\RoleListDto.cs" />
     <Compile Include="Authorization\Roles\IRoleAppService.cs" />
     <Compile Include="Authorization\Roles\RoleAppService.cs" />
+    <Compile Include="EmInf\InfStationsApp\Dtos\GetInfStationInput.cs" />
     <Compile Include="Utility\Auditing\AuditLogAndUser.cs" />
     <Compile Include="Utility\Auditing\AuditLogAppService.cs" />
     <Compile Include="Utility\Auditing\Dto\AuditLogListDto.cs" />
@@ -159,7 +160,6 @@
     <Compile Include="EmInf\InfEmployersApp\Dtos\InfEmployerListDto.cs" />
     <Compile Include="EmInf\InfEmployersApp\IInfEmployerAppService.cs" />
     <Compile Include="EmInf\InfEmployersApp\InfEmployerAppService.cs" />
-    <Compile Include="EmInf\InfStationsApp\Dtos\GetInfStationInput.cs" />
     <Compile Include="EmInf\InfStationsApp\Dtos\InfStationEditDto.cs" />
     <Compile Include="EmInf\InfStationsApp\Dtos\InfStationListDto.cs" />
     <Compile Include="EmInf\InfStationsApp\IInfStationAppService.cs" />

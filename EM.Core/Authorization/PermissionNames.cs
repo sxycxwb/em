@@ -54,9 +54,25 @@
         #endregion
 
         #region 角色管理
-
+        /// <summary>
+        /// 角色管理权限
+        /// </summary>
+        public const string InfRole = "Sys.InfRole";
+        /// <summary>
+        /// 角色创建权限
+        /// </summary>
+        public const string InfRole_CreateInfRole = "Sys.InfRole.CreateInfRole";
+        /// <summary>
+        /// 角色修改权限
+        /// </summary>
+        public const string InfRole_UpdateInfRole = "Sys.InfRole.UpdateInfRole";
+        /// <summary>
+        /// 角色删除权限
+        /// </summary>
+        public const string InfRole_DeleteInfRole = "Sys.InfRole.DeleteInfRole";
 
         #endregion 
+
         #endregion
 
         #region 车辆管理

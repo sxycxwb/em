@@ -50,19 +50,16 @@ namespace EM.Application.VehMaintenancesApp
 
             if (!string.IsNullOrEmpty(input.Filter))
             {
-                querySql += " AND (NumberPlate = @NumberPlate";
+                querySql += " AND (NumberPlate like @NumberPlate";
                 param.Add("NumberPlate", "%" + input.Filter + "%");
 
-                querySql += " or EngineNumber = @EngineNumber";
-                param.Add("EngineNumber", "%" + input.Filter + "%");
-
-                querySql += " or Brand = @Brand)";
+                querySql += " or Brand like @Brand)";
                 param.Add("Brand", "%" + input.Filter + "%");
             }
 
             using (var conn = DBUtility.GetMySqlConnection())
             {
-                var VehMaintenanceCount = conn.ExecuteScalar(DBUtility.GetCountSql(querySql)).ToString();
+                var VehMaintenanceCount = conn.ExecuteScalar(DBUtility.GetCountSql(querySql), param).ToString();
                 var VehMaintenanceListDtos = conn.Query<VehMaintenanceListDto>(DBUtility.GetPagedAndSortedSql(querySql, input.Sorting, input.SkipCount, input.MaxResultCount), param).ToList();
                 return new PagedResultOutput<VehMaintenanceListDto>(int.Parse(VehMaintenanceCount), VehMaintenanceListDtos);
             }
@@ -71,7 +68,6 @@ namespace EM.Application.VehMaintenancesApp
         /// <summary>
         /// 获取指定id的维保记录信息
         /// </summary>
-        [Audited]
         public async Task<VehMaintenanceEditDto> GetVehMaintenance(IdInput<System.Guid> input)
         {
             try

@@ -49,22 +49,22 @@ namespace EM.Application.VehUseRecordsApp
 
             if (!string.IsNullOrEmpty(input.Filter))
             {
-                querySql += " AND (NumberPlate = @NumberPlate";
+                querySql += " AND (NumberPlate like @NumberPlate";
                 param.Add("NumberPlate", "%" + input.Filter + "%");
 
-                querySql += " or Contact = @Contact";
+                querySql += " or Contact like @Contact";
                 param.Add("Contact", "%" + input.Filter + "%");
 
-                querySql += " or DutyPerson = @DutyPerson";
+                querySql += " or DutyPerson like @DutyPerson";
                 param.Add("DutyPerson", "%" + input.Filter + "%");
 
-                querySql += " or Brand = @Brand)";
+                querySql += " or Brand like @Brand)";
                 param.Add("Brand", "%" + input.Filter + "%");
             }
 
             using (var conn = DBUtility.GetMySqlConnection())
             {
-                var VehUseRecordCount = conn.ExecuteScalar(DBUtility.GetCountSql(querySql)).ToString();
+                var VehUseRecordCount = conn.ExecuteScalar(DBUtility.GetCountSql(querySql), param).ToString();
                 var VehUseRecordListDtos = conn.Query<VehUseRecordListDto>(DBUtility.GetPagedAndSortedSql(querySql, input.Sorting, input.SkipCount, input.MaxResultCount), param).ToList();
                 return new PagedResultOutput<VehUseRecordListDto>(int.Parse(VehUseRecordCount), VehUseRecordListDtos);
             }
@@ -152,7 +152,6 @@ namespace EM.Application.VehUseRecordsApp
         /// 删除用车记录
         /// </summary>
         //[AbpAuthorize(PermissionNames.VehUseRecord_DeleteVehUseRecord)]
-        [Audited]
         public async Task<int> DeleteVehUseRecord(DeleteDto<Guid> input)
         {
             string updateSql = "update veh_UseRecord set IsDeleted=@IsDeleted,DeleterUserId=@DeleterUserId,DeletionTime=@DeletionTime where ID=@ID";

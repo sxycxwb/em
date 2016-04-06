@@ -19,7 +19,7 @@ namespace EM.Authorization
 
             #region 系统管理
 
-            var sys = pages.CreateChildPermission(PermissionNames.InfStation, L("SysManagement"));
+            var sys = pages.CreateChildPermission(PermissionNames.Sys, L("SysManagement"));
 
             //电厂管理
             var inf_Station = sys.CreateChildPermission(PermissionNames.InfStation, L("InfStation"));
@@ -33,11 +33,17 @@ namespace EM.Authorization
             infEmployer.CreateChildPermission(PermissionNames.InfEmployer_UpdateInfEmployer, L("UpdateInfEmployer"));
             infEmployer.CreateChildPermission(PermissionNames.InfEmployer_DeleteInfEmployer, L("DeleteInfEmployer"));
 
+            //角色管理
+            var infRole = sys.CreateChildPermission(PermissionNames.InfRole, L("InfRole"));
+            infEmployer.CreateChildPermission(PermissionNames.InfRole_CreateInfRole, L("CreateInfRole"));
+            infEmployer.CreateChildPermission(PermissionNames.InfRole_UpdateInfRole, L("UpdateInfRole"));
+            infEmployer.CreateChildPermission(PermissionNames.InfRole_DeleteInfRole, L("DeleteInfRole"));
+
             #endregion
 
             #region 车辆管理
 
-            var veh = pages.CreateChildPermission(PermissionNames.InfStation, L("VehManagement"));
+            var veh = pages.CreateChildPermission(PermissionNames.Veh, L("VehManagement"));
 
             //车辆信息管理
             var vehVehicle = veh.CreateChildPermission(PermissionNames.VehVehicle, L("VehVehicle"));

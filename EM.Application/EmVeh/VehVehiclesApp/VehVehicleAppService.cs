@@ -43,19 +43,19 @@ namespace EM.Application.VehVehiclesApp
             var param = new DynamicParameters();
             if (!string.IsNullOrEmpty(input.Filter))
             {
-                querySql += " AND (NumberPlate = @NumberPlate";
+                querySql += " AND (NumberPlate like @NumberPlate";
                 param.Add("NumberPlate", "%" + input.Filter + "%");
 
-                querySql += " or EngineNumber = @EngineNumber";
+                querySql += " or EngineNumber like @EngineNumber";
                 param.Add("EngineNumber", "%" + input.Filter + "%");
 
-                querySql += " or Brand = @Brand)";
+                querySql += " or Brand like @Brand)";
                 param.Add("Brand", "%" + input.Filter + "%");
             }
 
             using (var conn = DBUtility.GetMySqlConnection())
             {
-                var VehVehicleCount = conn.ExecuteScalar(DBUtility.GetCountSql(querySql)).ToString();
+                var VehVehicleCount = conn.ExecuteScalar(DBUtility.GetCountSql(querySql), param).ToString();
                 var VehVehicleListDtos = conn.Query<VehVehicleListDto>(DBUtility.GetPagedAndSortedSql(querySql, input.Sorting, input.SkipCount, input.MaxResultCount), param).ToList();
                 return new PagedResultOutput<VehVehicleListDto>(int.Parse(VehVehicleCount), VehVehicleListDtos);
             }
@@ -64,7 +64,6 @@ namespace EM.Application.VehVehiclesApp
         /// <summary>
         /// 获取指定id的车辆信息
         /// </summary>
-        [Audited]
         public async Task<VehVehicleEditDto> GetVehVehicle(IdInput<System.Guid> input)
         {
             try

@@ -48,19 +48,19 @@ namespace EM.Application.InfEmployersApp
             }
             if (!string.IsNullOrEmpty(input.Filter))
             {
-                querySql += " AND (Name = @Name";
+                querySql += " AND (Name like @Name";
                 param.Add("Name", "%" + input.Filter + "%");
 
-                querySql += " or Contact = @Contact";
+                querySql += " or Contact like @Contact";
                 param.Add("Contact", "%" + input.Filter + "%");
 
-                querySql += " or Duty = @Duty)";
+                querySql += " or Duty like @Duty)";
                 param.Add("Duty", "%" + input.Filter + "%");
             }
 
             using (var conn = DBUtility.GetMySqlConnection())
             {
-                var infEmployerCount = conn.ExecuteScalar(DBUtility.GetCountSql(querySql)).ToString();
+                var infEmployerCount = conn.ExecuteScalar(DBUtility.GetCountSql(querySql), param).ToString();
                 var infEmployerListDtos = conn.Query<InfEmployerListDto>(DBUtility.GetPagedAndSortedSql(querySql, input.Sorting, input.SkipCount, input.MaxResultCount), param).ToList();
                 return new PagedResultOutput<InfEmployerListDto>(int.Parse(infEmployerCount), infEmployerListDtos);
             }
@@ -101,18 +101,23 @@ namespace EM.Application.InfEmployersApp
         //[AbpAuthorize(PermissionNames.InfEmployer_CreateInfEmployer)]
         public async Task<int> CreateInfEmployer(InfEmployerEditDto input)
         {
-            //TODO:新增前的逻辑判断，是否允许新增
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("insert into inf_employer(");
-            strSql.Append("Id,Name,BirthDate,Duty,Education,Contact,StationId,IsDeleted,CreationTime,CreatorUserId)");
-            strSql.Append(" values (");
-            strSql.Append("@Id,@Name,@BirthDate,@Duty,@Education,@Contact,@StationId,@IsDeleted,@CreationTime,@CreatorUserId)");
+            try {
+                //TODO:新增前的逻辑判断，是否允许新增
+                StringBuilder strSql = new StringBuilder();
+                strSql.Append("insert into inf_employer(");
+                strSql.Append("Id,Name,BirthDate,Duty,Education,Contact,StationId,IsDeleted,CreationTime,CreatorUserId)");
+                strSql.Append(" values (");
+                strSql.Append("@Id,@Name,@BirthDate,@Duty,@Education,@Contact,@StationId,@IsDeleted,@CreationTime,@CreatorUserId)");
 
-            using (var conn = DBUtility.GetMySqlConnection())
-            {
-                input.Id = Guid.NewGuid();
-                input.CreatorUserId = AbpSession.UserId;
-                return await conn.ExecuteAsync(strSql.ToString(), input);
+                using (var conn = DBUtility.GetMySqlConnection())
+                {
+                    input.Id = Guid.NewGuid();
+                    input.CreatorUserId = AbpSession.UserId;
+                    return await conn.ExecuteAsync(strSql.ToString(), input);
+                }
+            }
+            catch (Exception ex) {
+                throw ex;
             }
         }
 
@@ -131,6 +136,8 @@ namespace EM.Application.InfEmployersApp
             strSql.Append("Education=@Education,");
             strSql.Append("Contact=@Contact,");
             strSql.Append("StationId=@StationId,");
+            strSql.Append("LastModificationTime=@LastModificationTime,");
+            strSql.Append("LastModifierUserId=@LastModifierUserId");
             strSql.Append(" where Id=@Id ");
 
             using (var conn = DBUtility.GetMySqlConnection())

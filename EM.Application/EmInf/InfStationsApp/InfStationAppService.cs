@@ -54,7 +54,7 @@ namespace EM.Application.InfStationsApp
 
             using (var conn = DBUtility.GetMySqlConnection())
             {
-                var infStationCount = conn.ExecuteScalar(DBUtility.GetCountSql(querySql)).ToString();
+                var infStationCount = conn.ExecuteScalar(DBUtility.GetCountSql(querySql), param).ToString();
                 var infStationListDtos = conn.Query<InfStationListDto>(DBUtility.GetPagedAndSortedSql(querySql, input.Sorting, input.SkipCount, input.MaxResultCount), param).ToList();
                 return new PagedResultOutput<InfStationListDto>(int.Parse(infStationCount), infStationListDtos);
             }
@@ -63,7 +63,6 @@ namespace EM.Application.InfStationsApp
         /// <summary>
         /// 获取指定id的电厂信息
         /// </summary>
-        [Audited]
         public async Task<InfStationEditDto> GetInfStation(IdInput<System.Guid> input)
         {
             try
