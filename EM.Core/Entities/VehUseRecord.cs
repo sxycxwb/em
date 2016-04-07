@@ -22,12 +22,6 @@ namespace EM.Entities
         public virtual Guid UseCompanyId { get; set; }
 
         /// <summary>
-        /// 使用单位名称
-        /// </summary>
-        [NotMapped]
-        public string UseCompanyName { get; set; }
-
-        /// <summary>
         /// 车牌
         /// </summary>
         public virtual string NumberPlate { get; set; }

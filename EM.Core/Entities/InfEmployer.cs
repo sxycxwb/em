@@ -30,12 +30,19 @@ namespace EM.Entities
         /// <summary>
         /// 职务
         /// </summary>
-        [Required]
         public virtual string Duty { get; set; }
         /// <summary>
-        /// 学历
+        /// 第一学历
         /// </summary>
         public virtual string Education { get; set; }
+        /// <summary>
+        /// 第一专业
+        /// </summary>
+        public virtual string Profession { get; set; }
+        /// <summary>
+        /// 最高学历
+        /// </summary>
+        public virtual string HighEducation { get; set; }
         /// <summary>
         /// 联系方式
         /// </summary>
