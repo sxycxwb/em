@@ -151,6 +151,44 @@ namespace EM.Application.InfStationsApp
             }
         }
 
+        /// <summary>
+        /// 获取区域列表
+        /// </summary>
+        /// <returns></returns>
+        public Task<InfZoneListDto> GetInfZones()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 新增区域
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public Task<int> CreateInfZone(InfZoneEditDto input)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 获取类型列表
+        /// </summary>
+        /// <returns></returns>
+        public Task<InfTypeListDto> GetInfTypes()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 新增类型
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public Task<int> CreateInfType(InfTypeEditDto input)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
     }

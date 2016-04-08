@@ -41,6 +41,14 @@ namespace EM.Application
         /// </summary>
         Task<int> DeleteInfStation(DeleteDto<Guid> input);
 
+        Task<InfZoneListDto> GetInfZones();
+
+        Task<int> CreateInfZone(InfZoneEditDto input);
+
+        Task<InfTypeListDto> GetInfTypes();
+
+        Task<int> CreateInfType(InfTypeEditDto input);
+
         #endregion
 
     }
